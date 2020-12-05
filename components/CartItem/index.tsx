@@ -1,41 +1,49 @@
 import React from 'react';
-import { Text, View, ImageBackground } from 'react-native';
+import { Text, View, ImageBackground, ImageSourcePropType } from 'react-native';
 import StyleButton from '../StyleButton';
 import styles from './styles';
 
-interface Props {}
+interface Props {
+  name: string;
+  tagline: string;
+  taglineCTA?: string;
+  image: ImageSourcePropType;
+}
 
-const CarItem = (props: Props) => {
-  const {} = props;
+const CartItem = (props: Props) => {
+  const { name, tagline, taglineCTA, image } = props;
   return (
     <View style={styles.carContainer}>
-      <ImageBackground
-        source={require('../../assets/images/ModelX.jpeg')}
-        style={styles.image}
-      />
+      <ImageBackground source={image} style={styles.image} />
 
       <View style={styles.titles}>
-        <Text style={styles.title}>Model S</Text>
-        <Text style={styles.subTitle}>Starting at $69,420</Text>
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.subTitle}>
+          {tagline}
+          {'  '}
+          <Text style={styles.subTitleCta}>{taglineCTA}</Text>
+        </Text>
       </View>
 
-      <StyleButton
-        type="primary"
-        content={'Custom Order'}
-        onPress={() => {
-          console.warn('Custom Order was pressed');
-        }}
-      />
+      <View style={styles.buttonContainer}>
+        <StyleButton
+          type="primary"
+          content={'Custom Order'}
+          onPress={() => {
+            console.warn('Custom Order was pressed');
+          }}
+        />
 
-      <StyleButton
-        type="secondary"
-        content={'Existing Inventory'}
-        onPress={() => {
-          console.warn('Existing Inventory was pressed');
-        }}
-      />
+        <StyleButton
+          type="secondary"
+          content={'Existing Inventory'}
+          onPress={() => {
+            console.warn('Existing Inventory was pressed');
+          }}
+        />
+      </View>
     </View>
   );
 };
 
-export default CarItem;
+export default CartItem;
