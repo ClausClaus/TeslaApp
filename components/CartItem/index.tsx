@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, ImageBackground } from 'react-native';
-import styles from './style';
+import StyleButton from '../StyleButton';
+import styles from './styles';
 
 interface Props {}
 
@@ -9,7 +10,7 @@ const CarItem = (props: Props) => {
   return (
     <View style={styles.carContainer}>
       <ImageBackground
-        source={require('./assets/images/ModelX.jpeg')}
+        source={require('../../assets/images/ModelX.jpeg')}
         style={styles.image}
       />
 
@@ -17,6 +18,8 @@ const CarItem = (props: Props) => {
         <Text style={styles.title}>Model S</Text>
         <Text style={styles.subTitle}>Starting at $69,420</Text>
       </View>
+
+      <StyleButton />
     </View>
   );
 };
